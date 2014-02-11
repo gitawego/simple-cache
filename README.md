@@ -32,3 +32,5 @@ cache.expiration(myfilename,function(res){
 });
 
 ```
+
+cached filename format is 1392127591530+1_7D.myfilename, such as `1392127591530+1_7D.minify.js`
