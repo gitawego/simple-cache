@@ -5,7 +5,7 @@ a simple cache system for nodejs
 
 Usage
 =============
-```
+```js
 var SimpleCache = require('simple-cache');
 var cache = new Cache({
     namespace:'mynamespace',
