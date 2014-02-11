@@ -15,7 +15,7 @@ var myfilename = 'minify.js';
 cache.expiration(myfilename,function(res){
     if(!res.expired){
         cache.get(res.record,function(err,data){
-           if(err){throw new Error('can find');}
+           if(err){throw new Error(err);}
            //do sth with data
 
         },{encoding:'utf8'});
