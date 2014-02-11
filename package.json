@@ -1,6 +1,6 @@
 {
   "name": "simple-cache",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "a simple cache system for nodejs",
   "main": "index.js",
   "scripts": {
