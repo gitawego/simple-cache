@@ -1,5 +1,5 @@
 var fs = require('fs'),
-    dateHelper = require('lib/date'),
+    dateHelper = require(__dirname+'/./lib/date.js'),
     caching = false;
 function Cache(opt) {
     this.namespace = opt.namespace;
