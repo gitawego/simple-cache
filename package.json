@@ -1,0 +1,22 @@
+{
+  "name": "simple-cache",
+  "version": "0.0.0",
+  "description": "a simple cache system for nodejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gitawego/simple-cache.git"
+  },
+  "keywords": [
+    "cache"
+  ],
+  "author": "Hongbo LU",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gitawego/simple-cache/issues"
+  },
+  "homepage": "https://github.com/gitawego/simple-cache"
+}
