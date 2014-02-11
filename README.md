@@ -19,14 +19,14 @@ cache.expiration(myfilename,function(res){
            //do sth with data
 
         },{encoding:'utf8'});
-        return
+        return;
     }
     //get data to cache .....
     cache.cache(res.record,dataToBeCached,{
         filename:myfilename,
         expiration:"30D"
     },function(err){
-       //do
+       if(err){throw new Error(err);}
     });
 
 });
