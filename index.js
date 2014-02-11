@@ -68,14 +68,12 @@ Cache.prototype = {
      * @return {Record}
      */
     getFileConfig: function (filename) {
-        var record = new Record();
+        var record;
         filename = this.getParsedFilename(filename);
         fs.readdirSync(this.tmp).some(function (file) {
             if (file.substr(file.length - filename.length) == filename) {
                 var info = file.split(".").shift().split("_");
-                record.filename = file;
-                record.createdAt = info.shift();
-                record.duration = info.shift();
+                record = new Record(file,info.shift(),info.shift());
 
                 return true;
             }
