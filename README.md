@@ -33,6 +33,12 @@ cache.expiration(myfilename,function(res){
 
 ```
 
+###filename format
+
 cached filename format is [[createdTime]][[timezone]]_[[expiration]].[[myFilename]],
 
 such as ``1392127591530+1_7D.minify.js``
+
+###expiration format
+
+expiration could be D (day), M (month) or Y (year)
