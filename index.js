@@ -1,6 +1,11 @@
 var fs = require('fs'),
-    dateHelper = require(__dirname+'/./lib/date.js'),
+    dateHelper = require(__dirname + '/./lib/date.js'),
     caching = false;
+function Record(filename, createdAt, duration) {
+    this.filename = filename;
+    this.createdAt = createdAt;
+    this.duration = duration;
+}
 function Cache(opt) {
     this.namespace = opt.namespace;
     this.tmp = opt.cacheFolder;
@@ -60,37 +65,39 @@ Cache.prototype = {
      * get config by filename suffix.
      * @method getFileConfig
      * @param {String} filename filename suffix
+     * @return {Record}
      */
     getFileConfig: function (filename) {
-        var conf;
+        var record = new Record();
         filename = this.getParsedFilename(filename);
         fs.readdirSync(this.tmp).some(function (file) {
             if (file.substr(file.length - filename.length) == filename) {
                 var info = file.split(".").shift().split("_");
-                conf = {
-                    filename: file,
-                    createdAt: info.shift(),
-                    duration: info.shift()
-                };
+                record.filename = file;
+                record.createdAt = info.shift();
+                record.duration = info.shift();
+
                 return true;
             }
         });
-        console.log(conf);
-        return conf;
+        return record;
     },
     /**
      * get cached file
      * @method get
-     * @param {Object} record
-     * @param {String} record.filename filename in filesystem
+     * @param {Record} record
+     * @param {Function} callback
+     * @param {Object} [opt]
+     * @param {String} [opt.encoding]
+     * @param {String} [opt.flags]
      */
-    get: function (record, callback) {
-        fs.readFile(this.tmp + "/" + record.filename, callback);
+    get: function (record, callback, opt) {
+        fs.readFile(this.tmp + "/" + record.filename, opt, callback);
     },
     /**
      * filename format: 1329842436829+1_30D.minify.sncf.sncf1.css
      * @method cache
-     * @param {Object} [record] parsed record from filesystem
+     * @param {Record} [record] parsed record from filesystem
      * @param {String} data data to be cached
      * @param {Object} args
      * @param {String} args.filename filename suffix
